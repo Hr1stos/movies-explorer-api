@@ -11,7 +11,7 @@ const {
 } = require('../utils/constants');
 
 const getMovies = (req, res, next) => {
-  movieSchema.find({})
+  movieSchema.find({ owner: req.user._id })
     .then((movies) => {
       res.status(200).send(movies);
     })

@@ -32,8 +32,11 @@ const updateUserById = (req, res, next) => {
       res.status(200).send(user);
     })
     .catch((err) => {
+      next(new BadRequestError(incorrectDataUserMsg));
       if (err instanceof mongoose.Error.ValidationError) {
-        next(new BadRequestError(incorrectDataUserMsg));
+        return;
+      } if (err.code === 11000) {
+        next(new ConflictError(userAlreadyExistsMsg));
         return;
       } if (err instanceof mongoose.Error.DocumentNotFoundError) {
         next(new NotFoundError(userNotFoundMsg));
