@@ -85,7 +85,6 @@ const login = (req, res, next) => {
     })
     .catch((err) => next(err));
 };
-
 module.exports = {
   getCurrentUser,
   updateUserById,

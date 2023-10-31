@@ -6,4 +6,4 @@
 
 IP 158.160.115.46
 
-Backend https://api.kinopoisk-minimal.nomoredomainsrocks.ru
+Backend https://api.movies.hr1stos.nomoredomainsrocks.ru
