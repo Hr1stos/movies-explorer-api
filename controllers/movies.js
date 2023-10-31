@@ -11,7 +11,8 @@ const {
 } = require('../utils/constants');
 
 const getMovies = (req, res, next) => {
-  movieSchema.find({ owner: req.user._id })
+  const owner = req.user._id;
+  movieSchema.find({ owner })
     .then((movies) => {
       res.status(200).send(movies);
     })
@@ -32,6 +33,7 @@ const createMovie = (req, res, next) => {
     nameRU,
     nameEN,
   } = req.body;
+  const owner = req.user._id;
   movieSchema.create({
     country,
     director,
@@ -44,7 +46,7 @@ const createMovie = (req, res, next) => {
     movieId,
     nameRU,
     nameEN,
-    owner: req.user._id,
+    owner,
   })
     .then((movie) => {
       res.status(201).send(movie);
